@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marksheet — Computer Saksharata Mission, Hirakud</title>
+<meta name="robots" content="noindex">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --navy:#0f2a67; --navy2:#1e3a8a; --gold:#c9a227; --gold2:#e8c452;
+  --ink:#1c2540; --cream:#fffdf6;
+}
+body {
+  font-family:Georgia, 'Times New Roman', serif;
+  background:#e8ecf4; color:var(--ink); -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- Toolbar (screen only) ---------- */
+.toolbar {
+  position:sticky; top:0; z-index:50;
+  background:var(--navy); color:#fff; padding:.95rem 1.25rem;
+  display:flex; flex-wrap:wrap; align-items:center; gap:.75rem;
+  font-family:'Segoe UI', system-ui, sans-serif; font-size:.92rem;
+}
+.toolbar .grow { flex:1; min-width:220px; }
+.toolbar input {
+  padding:.62rem .95rem; border-radius:9px; border:1.6px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.12); color:#fff; font-size:.95rem; font-weight:700;
+  letter-spacing:.05em; text-transform:uppercase; width:190px;
+}
+.toolbar input::placeholder { color:rgba(255,255,255,.55); text-transform:none; letter-spacing:0; }
+.toolbar button {
+  padding:.62rem 1.15rem; border-radius:9px; border:none; cursor:pointer;
+  font-weight:700; font-size:.92rem; font-family:inherit;
+}
+.btn-gold { background:var(--gold2); color:#3b2700; }
+.btn-gold:hover { background:#fff; }
+.btn-light { background:rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.4) !important; }
+.btn-light:hover { background:#fff; color:var(--navy); }
+
+/* ---------- Sheet ---------- */
+.sheet-wrap { padding:2.25rem 1rem 3rem; display:flex; justify-content:center; }
+.certificate {
+  width:297mm; height:210mm; background:var(--cream);
+  background-image:
+    radial-gradient(circle at 12% 15%, rgba(201,162,39,.07), transparent 32%),
+    radial-gradient(circle at 88% 85%, rgba(15,42,103,.06), transparent 32%);
+  box-shadow:0 30px 80px rgba(15,42,103,.30);
+  position:relative; overflow:hidden; flex:none;
+  transform-origin:top center;
+}
+.frame-outer { position:absolute; inset:8mm; border:2.5px solid var(--navy); }
+.frame-inner { position:absolute; inset:11mm; border:1.2px solid var(--gold); pointer-events:none; }
+.corner { position:absolute; width:22mm; height:22mm; color:var(--gold); }
+.corner.tl { top:6.5mm; left:6.5mm; }
+.corner.tr { top:6.5mm; right:6.5mm; transform:scaleX(-1); }
+.corner.bl { bottom:6.5mm; left:6.5mm; transform:scaleY(-1); }
+.corner.br { bottom:6.5mm; right:6.5mm; transform:scale(-1,-1); }
+
+.content {
+  position:relative; z-index:5; height:100%;
+  display:flex; flex-direction:column;
+  padding:13mm 19mm 11mm; text-align:center;
+}
+
+/* header */
+.cert-head { display:flex; align-items:center; justify-content:center; gap:6mm; }
+.cert-logo { width:19mm; height:19mm; border-radius:50%; box-shadow:0 4px 14px rgba(15,42,103,.25); }
+.inst-name {
+  font-family:'Segoe UI', system-ui, sans-serif;
+  font-size:15pt; font-weight:800; letter-spacing:.06em;
+  color:var(--navy); text-transform:uppercase; line-height:1.25; text-align:left;
+}
+.inst-sub {
+  font-family:'Segoe UI', system-ui, sans-serif;
+  font-size:7.6pt; letter-spacing:.15em; color:var(--gold);
+  text-transform:uppercase; font-weight:700; margin-top:.8mm; text-align:left;
+}
+
+.cert-title {
+  margin-top:5mm; font-size:24pt; font-weight:700; letter-spacing:.14em;
+  color:var(--navy); text-transform:uppercase; line-height:1.15;
+}
+.cert-title span {
+  display:block; font-size:10.5pt; letter-spacing:.5em; color:var(--gold);
+  margin-top:1.2mm; font-family:'Segoe UI', system-ui, sans-serif; font-weight:700;
+}
+.title-rule {
+  width:60mm; height:1.2px; margin:2.8mm auto 0;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* student info grid */
+.info-grid {
+  margin-top:5mm; width:100%;
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:2.2mm 5mm;
+  font-family:'Segoe UI', system-ui, sans-serif; text-align:left;
+}
+.info-cell { border-bottom:1px dotted #c9cede; padding:1.6mm 1mm 1.2mm; }
+.info-cell .k { font-size:7.2pt; letter-spacing:.14em; text-transform:uppercase; color:#7a869e; font-weight:700; }
+.info-cell .v { font-size:10pt; font-weight:700; color:var(--navy); margin-top:.6mm; outline:none; }
+.info-cell.wide { grid-column:span 2; }
+
+/* marks table */
+.marks-table {
+  width:100%; margin-top:5mm; border-collapse:collapse;
+  font-family:'Segoe UI', system-ui, sans-serif; font-size:9.4pt;
+}
+.marks-table th {
+  background:var(--navy); color:#fff; letter-spacing:.1em; text-transform:uppercase;
+  font-size:7.6pt; padding:2.6mm 2mm; border:1px solid var(--navy);
+}
+.marks-table td {
+  border:1px solid #c9cede; padding:2.1mm 2mm; color:var(--ink); outline:none;
+  background:rgba(255,255,255,.5);
+}
+.marks-table td.num { text-align:center; font-weight:700; color:var(--navy); }
+.marks-table td[contenteditable]:focus { background:#fffbe8; }
+.marks-table tr.total td {
+  background:#eef2fb; font-weight:800; color:var(--navy); letter-spacing:.05em;
+}
+.marks-table col.c1 { width:11mm; }
+.marks-table col.c2 { }
+.marks-table col.c3 { width:27mm; }
+.marks-table col.c4 { width:35mm; }
+.marks-table col.c5 { width:22mm; }
+
+/* result line */
+.result-bar {
+  margin-top:4.5mm; width:100%;
+  display:flex; justify-content:space-between; align-items:center; gap:5mm;
+  font-family:'Segoe UI', system-ui, sans-serif;
+  background:linear-gradient(90deg, rgba(15,42,103,.06), rgba(201,162,39,.12), rgba(15,42,103,.06));
+  border:1px solid var(--gold); border-radius:9px; padding:3mm 5mm;
+}
+.result-bar .rb-item { text-align:center; }
+.result-bar .rb-k { font-size:7.2pt; letter-spacing:.16em; text-transform:uppercase; color:#7a869e; font-weight:700; }
+.result-bar .rb-v { font-size:11.5pt; font-weight:800; color:var(--navy); margin-top:.5mm; outline:none; }
+.result-bar .rb-v.gold { color:#8a6d12; }
+
+/* signatures + seal */
+.sig-row {
+  margin-top:auto; width:100%;
+  display:flex; justify-content:space-between; align-items:flex-end; gap:8mm;
+}
+.sig-block { text-align:center; width:62mm; }
+.sig-img { height:12mm; display:flex; align-items:flex-end; justify-content:center; opacity:.85; }
+.sig-img svg { height:11mm; }
+.sig-line { border-top:1.3px solid var(--navy); padding-top:1.8mm; }
+.sig-role {
+  font-family:'Segoe UI', system-ui, sans-serif; font-size:8.4pt; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--navy);
+}
+.sig-name { font-size:10pt; font-style:italic; color:#4a5568; margin-top:.6mm; }
+.seal {
+  width:28mm; height:28mm; border-radius:50%; flex:none;
+  background:radial-gradient(circle at 32% 28%, #f6e7a8, var(--gold) 58%, #8a6d12 100%);
+  box-shadow:0 8px 22px rgba(201,162,39,.45), inset 0 0 0 2.2px rgba(255,255,255,.55);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:#3b2700; text-align:center; font-family:'Segoe UI', system-ui, sans-serif;
+}
+.seal .s1 { font-size:5.8pt; letter-spacing:.12em; font-weight:800; }
+.seal .s2 { font-size:10.5pt; font-weight:900; line-height:1.1; margin:.3mm 0; }
+.seal .s3 { font-size:5pt; letter-spacing:.12em; font-weight:700; }
+
+/* footer */
+.cert-foot {
+  margin-top:5mm; width:100%;
+  display:flex; justify-content:space-between; align-items:center; gap:6mm;
+  font-family:'Segoe UI', system-ui, sans-serif; font-size:7.2pt;
+  color:#7a869e; letter-spacing:.05em;
+}
+.cert-no {
+  position:absolute; top:13mm; right:16mm;
+  font-family:'Segoe UI', system-ui, sans-serif; font-size:8pt;
+  color:var(--navy); letter-spacing:.1em; font-weight:700; text-align:right;
+}
+.cert-no small { display:block; color:var(--gold); font-size:6.6pt; letter-spacing:.18em; }
+
+/* ---------- Screen scaling & print ---------- */
+@media screen and (max-width: 1200px) {
+  .certificate { transform:scale(.72); margin-bottom:-58mm; }
+}
+@media screen and (max-width: 900px) {
+  .certificate { transform:scale(.5); margin-bottom:-105mm; }
+}
+@media print {
+  @page { size:A4 landscape; margin:0; }
+  body { background:#fff; }
+  .toolbar { display:none !important; }
+  .sheet-wrap { padding:0; }
+  .certificate {
+    box-shadow:none; transform:none !important; margin:0 !important;
+    width:297mm; height:210mm; page-break-after:avoid;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOOLBAR (won't print) ============ -->
+<div class="toolbar no-print">
+  <div class="grow">
+    📝 <strong>Marksheet Generator</strong> — enter a certificate number to auto-fill student + marks
+    from your records, or click any cell to type manually. Totals calculate automatically.
+  </div>
+  <input id="certLookup" type="text" placeholder="Cert no: CSM/2024/001" autocomplete="off">
+  <button class="btn-gold" onclick="loadCert()">Load Student</button>
+  <button class="btn-light" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- ============ MARKSHEET ============ -->
+<div class="sheet-wrap">
+  <div class="certificate">
+
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+
+    <svg class="corner tl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 92 V32 Q8 8 32 8 H92"/><path d="M16 92 V36 Q16 16 36 16 H92" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.2" fill="currentColor" stroke="none"/>
+    </svg>
+    <svg class="corner tr" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 92 V32 Q8 8 32 8 H92"/><path d="M16 92 V36 Q16 16 36 16 H92" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.2" fill="currentColor" stroke="none"/>
+    </svg>
+    <svg class="corner bl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 92 V32 Q8 8 32 8 H92"/><path d="M16 92 V36 Q16 16 36 16 H92" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.2" fill="currentColor" stroke="none"/>
+    </svg>
+    <svg class="corner br" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 92 V32 Q8 8 32 8 H92"/><path d="M16 92 V36 Q16 16 36 16 H92" stroke-width="1.2"/>
+      <circle cx="24" cy="24" r="3.2" fill="currentColor" stroke="none"/>
+    </svg>
+
+    <div class="cert-no">
+      <small>ROLL / CERT. NO.</small>
+      <span id="fCertNo" contenteditable="true">CSM/2024/001</span>
+    </div>
+
+    <div class="content">
+
+      <div class="cert-head">
+        <img class="cert-logo" src="logo.png" alt="Computer Saksharata Mission logo"
+             onerror="this.style.visibility='hidden'">
+        <div>
+          <div class="inst-name">Computer Saksharata Mission</div>
+          <div class="inst-sub">Hirakud · Odisha &nbsp;•&nbsp; Estd. 2002 &nbsp;•&nbsp; Govt. Regd. &amp; ISO 9001-2015 Certified</div>
+        </div>
+      </div>
+
+      <div class="cert-title">
+        Marksheet
+        <span>Statement of Marks</span>
+      </div>
+      <div class="title-rule"></div>
+
+      <!-- student info -->
+      <div class="info-grid">
+        <div class="info-cell"><div class="k">Student Name</div><div class="v" id="fName" contenteditable="true">Student Name</div></div>
+        <div class="info-cell"><div class="k">Course</div><div class="v" id="fCourse" contenteditable="true">Course Name</div></div>
+        <div class="info-cell"><div class="k">Duration</div><div class="v" id="fDuration" contenteditable="true">—</div></div>
+        <div class="info-cell"><div class="k">Date of Issue</div><div class="v" id="fIssue" contenteditable="true">—</div></div>
+      </div>
+
+      <!-- marks table -->
+      <table class="marks-table" id="marksTable">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup>
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Subject / Paper</th>
+            <th>Max. Marks</th>
+            <th>Marks Obtained</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="marksBody">
+          <!-- rows generated here -->
+        </tbody>
+      </table>
+
+      <!-- result summary -->
+      <div class="result-bar">
+        <div class="rb-item"><div class="rb-k">Total Marks</div><div class="rb-v" id="fTotal">—</div></div>
+        <div class="rb-item"><div class="rb-k">Percentage</div><div class="rb-v" id="fPercent">—</div></div>
+        <div class="rb-item"><div class="rb-k">Result</div><div class="rb-v gold" id="fResult" contenteditable="true">—</div></div>
+        <div class="rb-item"><div class="rb-k">Grade Scale</div><div class="rb-v" style="font-size:8pt; letter-spacing:.06em;">90+ A+ · 80-89 A · 70-79 B+ · 60-69 B · 50-59 C</div></div>
+      </div>
+
+      <!-- signatures + seal -->
+      <div class="sig-row">
+        <div class="sig-block">
+          <div class="sig-img">
+            <svg viewBox="0 0 160 46"><path d="M8 34c18-18 30 4 42-6s22-20 34-8 20 18 36 6 24-2 32 4" fill="none" stroke="#1c2540" stroke-width="2.1" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sig-line">
+            <div class="sig-role">Course Instructor</div>
+            <div class="sig-name">Computer Saksharata Mission</div>
+          </div>
+        </div>
+
+        <div class="seal">
+          <div class="s1">OFFICIAL</div>
+          <div class="s2">CSM</div>
+          <div class="s1">SEAL</div>
+          <div class="s3">HIRAKUD</div>
+        </div>
+
+        <div class="sig-block">
+          <div class="sig-img">
+            <svg viewBox="0 0 160 46"><path d="M6 30c14-14 26 2 40-8s26-14 34-2 18 14 32 4 26 0 42 6" fill="none" stroke="#1c2540" stroke-width="2.1" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sig-line">
+            <div class="sig-role">Director</div>
+            <div class="sig-name">Computer Saksharata Mission</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-foot">
+        <div>Laxmi Narayan Mandir Complex, Hirakud, Sambalpur, Odisha 768016 &nbsp;•&nbsp; +91 97760 17247</div>
+        <div>Verify this marksheet at our website → Certificate Verification</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="certificates.js"></script>
+<script>
+function normalizeCert(s) {
+  return (s || '').trim().toUpperCase().replace(/\s+/g, '');
+}
+function gradeFor(pct) {
+  if (pct >= 90) return 'A+'; if (pct >= 80) return 'A';
+  if (pct >= 70) return 'B+'; if (pct >= 60) return 'B';
+  if (pct >= 50) return 'C'; return 'F';
+}
+function emptyRows(n) {
+  return Array.from({length: n}, function () {
+    return { subject: '', max: '', obtained: '' };
+  });
+}
+function renderMarks(rows) {
+  var body = document.getElementById('marksBody');
+  body.innerHTML = '';
+  rows.forEach(function (r, i) {
+    var tr = document.createElement('tr');
+    var obt = (r.obtained === '' || r.obtained === undefined || r.obtained === null) ? '' : r.obtained;
+    var max = (r.max === '' || r.max === undefined || r.max === null) ? '' : r.max;
+    var g = (obt !== '' && max !== '') ? gradeFor(Math.round((obt / max) * 100)) : (r.grade || '');
+    tr.innerHTML =
+      '<td class="num">' + (i + 1) + '</td>' +
+      '<td contenteditable="true">' + (r.subject || '') + '</td>' +
+      '<td class="num" contenteditable="true">' + max + '</td>' +
+      '<td class="num" contenteditable="true">' + obt + '</td>' +
+      '<td class="num" contenteditable="true">' + g + '</td>';
+    body.appendChild(tr);
+  });
+  // total row
+  var total = document.createElement('tr');
+  total.className = 'total';
+  total.innerHTML = '<td></td><td>TOTAL</td><td class="num" id="tMax">—</td><td class="num" id="tObt">—</td><td></td>';
+  body.appendChild(total);
+  recalc();
+}
+function recalc() {
+  var rows = document.querySelectorAll('#marksBody tr:not(.total)');
+  var tMax = 0, tObt = 0, has = false;
+  rows.forEach(function (tr) {
+    var cells = tr.querySelectorAll('td');
+    if (cells.length < 5) return;
+    var mx = parseFloat(cells[2].textContent) || 0;
+    var ob = parseFloat(cells[3].textContent) || 0;
+    if (mx || ob) has = true;
+    tMax += mx; tObt += ob;
+    // live grade
+    if (mx && cells[4]) cells[4].textContent = gradeFor(Math.round((ob / mx) * 100));
+  });
+  document.getElementById('tMax').textContent = has ? tMax : '—';
+  document.getElementById('tObt').textContent = has ? tObt : '—';
+  document.getElementById('fTotal').textContent = has ? (tObt + ' / ' + tMax) : '—';
+  document.getElementById('fPercent').textContent = has ? (Math.round((tObt / tMax) * 1000) / 10) + '%' : '—';
+}
+document.getElementById('marksBody').addEventListener('input', recalc);
+
+function loadCert() {
+  var q = normalizeCert(document.getElementById('certLookup').value || new URLSearchParams(location.search).get('cert') || '');
+  if (!q) { alert('Please enter a certificate number (e.g. CSM/2024/001)'); return; }
+  if (typeof CERTIFICATES === 'undefined') {
+    alert('certificates.js is not loaded yet — upload it next to this file on your website.');
+    return;
+  }
+  var rec = CERTIFICATES[q];
+  if (rec) {
+    document.getElementById('fCertNo').textContent = q;
+    document.getElementById('fName').textContent = rec.name;
+    document.getElementById('fCourse').textContent = rec.course;
+    document.getElementById('fDuration').textContent = rec.duration;
+    document.getElementById('fIssue').textContent = rec.issue;
+    document.getElementById('fResult').textContent = rec.result || 'Passed';
+    renderMarks((rec.marks && rec.marks.length) ? rec.marks : emptyRows(5));
+  } else {
+    alert('No record found for "' + q + '" — you can type the details manually on the marksheet.');
+    document.getElementById('fCertNo').textContent = q;
+    renderMarks(emptyRows(5));
+    document.getElementById('fName').focus();
+  }
+}
+// initial state: empty editable rows
+renderMarks(emptyRows(5));
+// Auto-load from URL: marksheet.html?cert=CSM/2024/001
+(function () {
+  var p = new URLSearchParams(location.search).get('cert');
+  if (p) { document.getElementById('certLookup').value = p; loadCert(); }
+})();
+document.getElementById('certLookup').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') loadCert();
+});
+</script>
+
+</body>
+</html>
