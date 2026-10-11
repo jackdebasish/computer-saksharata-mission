@@ -5,7 +5,7 @@ Official website of **Computer Saksharata Mission**, Laxmi Narayan Mandir Comple
 🌐 **Live site:** *(update this after publishing — e.g. https://YOUR-USERNAME.github.io/computer-saksharata-mission/)*
 
 ## About the institute
-Affordable, job-oriented computer education for students, homemakers and professionals — CCC, DCA, ADCA, Tally Prime with GST, DTP, Typing & Data Entry, Web Design, Programming, Hardware & Networking.
+Affordable, job-oriented computer education for students, homemakers and professionals — OS-CIT, PGDCA, DCA, ADCA, Tally Prime with GST, DTP, Typing & Data Entry, Programming, Hardware & Networking.
 
 ## Contact
 - 📍 Laxmi Narayan Mandir Complex, Hirakud, Sambalpur, Odisha
