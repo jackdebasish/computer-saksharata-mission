@@ -353,38 +353,8 @@ body.no-topbar .topbar { display:none; }
 body.no-topbar, html.no-topbar { --topbar-h:0px; }
 
 /* Certificate verification */
-.verify-card {
-  max-width:780px; margin-inline:auto;
-  background:#fff; border:1px solid var(--line); border-radius:22px;
-  padding:2.35rem; box-shadow:var(--shadow);
-}
-.verify-row { display:flex; gap:.85rem; flex-wrap:wrap; }
-.verify-row input {
-  flex:1; min-width:230px; padding:.95rem 1.15rem; border:1.6px solid var(--line);
-  border-radius:11px; font-family:var(--font); font-size:1.05rem; font-weight:700;
-  letter-spacing:.05em; text-transform:uppercase; background:#fdfefe;
-}
-.verify-row input:focus { outline:none; border-color:var(--blue-500); box-shadow:0 0 0 4px rgba(37,99,235,.14); }
-.verify-hint { margin-top:1rem; color:var(--muted); font-size:.92rem; }
-.verify-result { margin-top:1.65rem; border-radius:15px; padding:1.55rem 1.65rem; }
-.verify-result.ok { background:#dcfce7; border:1.6px solid #86efac; }
-.verify-result.bad { background:#fef3c7; border:1.6px solid #fcd34d; }
-.verify-result h3 { display:flex; align-items:center; gap:.6rem; margin-bottom:.95rem; }
-.verify-result.ok h3 { color:#166534; }
-.verify-result.bad h3 { color:#92400e; }
-.verify-table { width:100%; border-collapse:collapse; }
-.verify-table td { padding:.55rem .35rem; font-size:.98rem; color:var(--slate); vertical-align:top; }
-.verify-table td:first-child { font-weight:700; color:var(--blue-900); width:170px; }
-.verify-stamp {
-  display:inline-flex; align-items:center; gap:.5rem; margin-top:1.15rem;
-  background:#166534; color:#fff; font-weight:800; font-size:.82rem; letter-spacing:.08em;
-  padding:.5rem 1.05rem; border-radius:999px; text-transform:uppercase;
-}
 @media (max-width: 720px) {
   .topbar { font-size:.82rem; padding:.55rem 2.4rem; }
-  .verify-card { padding:1.55rem; }
-  .verify-row { flex-direction:column; }
-  .verify-table td:first-child { width:125px; }
 }
 
 /* FAQ */
@@ -773,7 +743,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
       <a href="index.html#courses">Courses</a>
       <a href="index.html#why-us">Why Us</a>
       <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#verify">Verify</a>
       <a href="index.html#contact">Contact</a>
     </nav>
     <div class="nav-cta">
