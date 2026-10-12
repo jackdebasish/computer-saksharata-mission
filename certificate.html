@@ -40,7 +40,7 @@ body {
 .btn-light:hover { background:#fff; color:var(--navy); }
 
 /* ---------- Certificate sheet ---------- */
-.sheet-wrap { padding:2.25rem 1rem 3rem; display:flex; justify-content:center; }
+.sheet-wrap { padding:1.5rem .65rem 2.5rem; display:flex; justify-content:center; overflow-x:hidden; width:100%; }
 .certificate {
   width:297mm; height:210mm; background:var(--cream);
   background-image:
@@ -172,11 +172,10 @@ body {
 .cert-no small { display:block; color:var(--gold); font-size:7pt; letter-spacing:.18em; }
 
 /* ---------- Screen scaling & print ---------- */
-@media screen and (max-width: 1200px) {
-  .certificate { transform:scale(.72); margin-bottom:-58mm; }
-}
-@media screen and (max-width: 900px) {
-  .certificate { transform:scale(.5); margin-bottom:-105mm; }
+@media (max-width: 720px) {
+  .toolbar input { font-size:16px; width:100%; }
+  .toolbar { padding:.85rem 1rem; }
+  .toolbar .grow { font-size:.84rem; }
 }
 @media print {
   @page { size:A4 landscape; margin:0; }
@@ -353,6 +352,30 @@ function loadCert() {
 document.getElementById('certLookup').addEventListener('keydown', function (e) {
   if (e.key === 'Enter') loadCert();
 });
+</script>
+
+
+<script>
+// ===== Auto-fit the certificate/marksheet to any screen (phones too) =====
+function fitSheet() {
+  var sheet = document.querySelector('.certificate');
+  var wrap = document.querySelector('.sheet-wrap');
+  if (!sheet || !wrap) return;
+  sheet.style.transform = 'none';
+  sheet.style.marginBottom = '0';
+  var naturalW = sheet.offsetWidth;
+  var naturalH = sheet.offsetHeight;
+  var avail = wrap.clientWidth - 20;
+  if (avail <= 0 || naturalW <= 0) return;
+  var scale = Math.min(1, avail / naturalW);
+  if (scale < 1) {
+    sheet.style.transform = 'scale(' + scale + ')';
+    sheet.style.marginBottom = (naturalH * (scale - 1)) + 'px';
+  }
+}
+window.addEventListener('resize', fitSheet);
+window.addEventListener('load', fitSheet);
+fitSheet();
 </script>
 
 </body>
