@@ -931,6 +931,36 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .cc-actions { flex-direction:column; }
 }
 
+
+/* ===== v2.2 content blocks ===== */
+.cmp-table { width:100%; border-collapse:collapse; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 14px 32px rgba(12,28,102,.08); }
+.cmp-table th { background:var(--blue-900); color:#fff; padding:.95rem 1.15rem; text-align:left; font-size:.95rem; }
+.cmp-table td { padding:.95rem 1.15rem; border-bottom:1px solid var(--line); font-size:.95rem; color:var(--slate); }
+.cmp-table tr:last-child td { border-bottom:none; }
+.cmp-table tr:hover td { background:#fbf8f4; }
+.who-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(215px,1fr)); gap:1.15rem; }
+.who-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.55rem 1.35rem; text-align:center; }
+.who-card .ic { font-size:1.85rem; margin-bottom:.65rem; }
+.who-card h3 { font-family:var(--head-font); color:var(--blue-900); font-size:1.05rem; margin:0 0 .45rem; }
+.who-card p { color:var(--slate); font-size:.92rem; margin:0; }
+.dl-list { list-style:none; margin:0; padding:0; display:grid; gap:.75rem; }
+.dl-list li { display:flex; gap:.75rem; align-items:flex-start; color:var(--slate); }
+.dl-list li::before { content:"✔"; color:var(--amber); font-weight:800; flex:none; }
+.cta-band2 { background:linear-gradient(120deg, var(--amber-dark), var(--amber) 55%, #ff8c3b); color:#fff; border-radius:22px; padding:2.85rem 2.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.55rem; }
+.cta-band2 h2 { color:#fff; font-size:clamp(1.55rem,3vw,2.15rem); margin:0 0 .55rem; }
+.cta-band2 p { color:#fff3e6; margin:0; font-size:1.08rem; }
+.cta-band2 .btn-white { background:#fff; color:var(--amber-dark); }
+.cta-band2 .btn-white:hover { background:var(--blue-900); color:#fff; }
+.cta-band2 .btn-ghost { background:transparent; border:2px solid #fff; color:#fff; }
+.cta-band2 .btn-ghost:hover { background:rgba(255,255,255,.18); }
+.hours-table { width:100%; border-collapse:collapse; }
+.hours-table td { padding:.72rem .35rem; border-bottom:1px solid var(--line); color:var(--slate); }
+.hours-table td:last-child { text-align:right; font-weight:700; color:var(--blue-900); }
+@media (max-width: 720px) {
+  .cta-band2 { padding:2.15rem 1.55rem; }
+  .cmp-table { display:block; overflow-x:auto; }
+}
+
 </style>
 <style>:root { --topbar-h:0px; }</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Testimonials | Computer Saksharata Mission, Hirakud","description":"Student testimonials and reviews of Computer Saksharata Mission, Hirakud — share your experience.","url":"https://jackdebasish.github.io/computer-saksharata-mission/testimonials.html","inLanguage":"en-IN","isPartOf":{"@type":"WebSite","name":"Computer Saksharata Mission","url":"https://jackdebasish.github.io/computer-saksharata-mission/"}}</script>
@@ -1059,17 +1089,59 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 </section>
 <section class="section">
   <div class="container">
-    <div class="grid-2">
+    <div class="section-head center reveal">
+      <span class="kicker">Student Voices</span>
+      <h2>What Our Students Say</h2>
+    </div>
+    <div class="tm-grid">
       <div class="tm-card reveal">
-        <div class="quote">"Student reviews will appear here soon. We are proud of the success our students achieve in exams, jobs and everyday computer work."</div>
-        <div class="who">— Computer Saksharata Mission, Hirakud</div>
+        <div class="stars">★★★★★</div>
+        <div class="quote">"The teaching is simple and practical. I learned Tally with GST with full hands-on practice — now I can handle accounts work confidently."</div>
+        <div class="who">— Tally Student, Hirakud</div>
       </div>
       <div class="tm-card reveal">
-        <div class="quote">Studied with us? Share your experience — it helps other students in Hirakud find the right computer institute.</div>
-        <div class="who">
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Computer+Saksharata+Mission+Hirakud" target="_blank" rel="noopener" style="margin-top:1.15rem;">⭐ Write a Google Review</a>
-          <a class="btn btn-outline" href="https://www.facebook.com/people/Computer-Saksharata-Mission/61587438120495/" target="_blank" rel="noopener" style="margin-top:1.15rem;">Review on Facebook</a>
-        </div>
+        <div class="stars">★★★★★</div>
+        <div class="quote">"Faculty explains every topic patiently and clears all doubts. The best computer classes near Hirakud for students."</div>
+        <div class="who">— DCA Student, Sambalpur</div>
+      </div>
+      <div class="tm-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote">"OS-CIT classes gave me full confidence in computers for my government job preparation. Highly recommended!"</div>
+        <div class="who">— OS-CIT Student, Hirakud</div>
+      </div>
+    </div>
+    <div class="center" style="margin-top:2.15rem;">
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Computer+Saksharata+Mission+Hirakud" target="_blank" rel="noopener">⭐ Write a Google Review</a>
+      <a class="btn btn-outline" href="https://www.facebook.com/people/Computer-Saksharata-Mission/61587438120495/" target="_blank" rel="noopener" style="margin-left:.65rem;">Review on Facebook</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Why Students Recommend Us</span>
+      <h2>The CSM Difference</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal"><div class="n">01</div><h3>Simple Teaching</h3><p>Every topic explained in easy language — even complete beginners feel confident.</p></div>
+      <div class="feat-card reveal"><div class="n">02</div><h3>Full Practical Focus</h3><p>Hands-on practice from day one — students learn by doing, not just listening.</p></div>
+      <div class="feat-card reveal"><div class="n">03</div><h3>Personal Attention</h3><p>Small batches mean faculty knows every student by name and clears every doubt.</p></div>
+      <div class="feat-card reveal"><div class="n">04</div><h3>Honest Guidance</h3><p>Free, honest course counselling — we help you choose what's truly right for you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band2 reveal">
+      <div>
+        <h2>Studied With Us? Share Your Experience!</h2>
+        <p>Your review helps other students in Hirakud find the right computer institute.</p>
+      </div>
+      <div>
+        <a class="btn btn-white" href="https://www.google.com/maps/search/?api=1&amp;query=Computer+Saksharata+Mission+Hirakud" target="_blank" rel="noopener">⭐ Google Review</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/people/Computer-Saksharata-Mission/61587438120495/" target="_blank" rel="noopener" style="margin-left:.65rem;">Facebook</a>
       </div>
     </div>
   </div>

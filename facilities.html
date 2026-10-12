@@ -931,6 +931,56 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .cc-actions { flex-direction:column; }
 }
 
+
+/* ===== v2.1 completeness fixes ===== */
+.nav-links > li > a.active { background:var(--amber); color:#fff; }
+.slide-banner { position:relative; }
+.slide-cap { position:absolute; left:0; right:0; bottom:0; padding:clamp(1.75rem,4vw,2.85rem) 4% calc(clamp(1.75rem,4vw,2.85rem) + 12px); background:linear-gradient(transparent, rgba(12,28,102,.9) 58%); color:#fff; text-align:center; }
+.slide-cap h1 { color:#fff; font-size:clamp(1.75rem,4.4vw,3.05rem); margin:.35rem 0 .55rem; }
+.slide-cap p { color:#e7ecff; margin:0 auto 1.35rem; max-width:720px; font-size:clamp(1rem,1.9vw,1.2rem); }
+.slide-cap .row { display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; }
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:1.15rem; }
+.g-tile { position:relative; margin:0; border-radius:18px; overflow:hidden; box-shadow:0 18px 36px rgba(12,28,102,.12); }
+.g-tile img { display:block; width:100%; height:230px; object-fit:cover; }
+.g-tile figcaption { position:absolute; left:0; right:0; bottom:0; padding:2.15rem 1.15rem .95rem; background:linear-gradient(transparent, rgba(12,28,102,.88)); color:#fff; font-weight:700; font-size:.98rem; }
+.tm-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.35rem; }
+.stars { color:#f4790f; letter-spacing:.18em; font-size:1.15rem; margin-bottom:.85rem; }
+@media (max-width: 720px) {
+  .nav-links > li > a.active { background:#fdece0; color:var(--amber-dark); }
+  .slide-cap { position:static; background:var(--blue-900); padding:1.55rem 6%; }
+  .g-tile img { height:200px; }
+}
+
+
+/* ===== v2.2 content blocks ===== */
+.cmp-table { width:100%; border-collapse:collapse; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 14px 32px rgba(12,28,102,.08); }
+.cmp-table th { background:var(--blue-900); color:#fff; padding:.95rem 1.15rem; text-align:left; font-size:.95rem; }
+.cmp-table td { padding:.95rem 1.15rem; border-bottom:1px solid var(--line); font-size:.95rem; color:var(--slate); }
+.cmp-table tr:last-child td { border-bottom:none; }
+.cmp-table tr:hover td { background:#fbf8f4; }
+.who-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(215px,1fr)); gap:1.15rem; }
+.who-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.55rem 1.35rem; text-align:center; }
+.who-card .ic { font-size:1.85rem; margin-bottom:.65rem; }
+.who-card h3 { font-family:var(--head-font); color:var(--blue-900); font-size:1.05rem; margin:0 0 .45rem; }
+.who-card p { color:var(--slate); font-size:.92rem; margin:0; }
+.dl-list { list-style:none; margin:0; padding:0; display:grid; gap:.75rem; }
+.dl-list li { display:flex; gap:.75rem; align-items:flex-start; color:var(--slate); }
+.dl-list li::before { content:"✔"; color:var(--amber); font-weight:800; flex:none; }
+.cta-band2 { background:linear-gradient(120deg, var(--amber-dark), var(--amber) 55%, #ff8c3b); color:#fff; border-radius:22px; padding:2.85rem 2.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.55rem; }
+.cta-band2 h2 { color:#fff; font-size:clamp(1.55rem,3vw,2.15rem); margin:0 0 .55rem; }
+.cta-band2 p { color:#fff3e6; margin:0; font-size:1.08rem; }
+.cta-band2 .btn-white { background:#fff; color:var(--amber-dark); }
+.cta-band2 .btn-white:hover { background:var(--blue-900); color:#fff; }
+.cta-band2 .btn-ghost { background:transparent; border:2px solid #fff; color:#fff; }
+.cta-band2 .btn-ghost:hover { background:rgba(255,255,255,.18); }
+.hours-table { width:100%; border-collapse:collapse; }
+.hours-table td { padding:.72rem .35rem; border-bottom:1px solid var(--line); color:var(--slate); }
+.hours-table td:last-child { text-align:right; font-weight:700; color:var(--blue-900); }
+@media (max-width: 720px) {
+  .cta-band2 { padding:2.15rem 1.55rem; }
+  .cmp-table { display:block; overflow-x:auto; }
+}
+
 </style>
 <style>:root { --topbar-h:0px; }</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Facilities | Computer Saksharata Mission, Hirakud","description":"Facilities at Computer Saksharata Mission Hirakud — practical computer lab, skilled faculty, flexible batches, affordable fees and career counselling.","url":"https://jackdebasish.github.io/computer-saksharata-mission/facilities.html","inLanguage":"en-IN","isPartOf":{"@type":"WebSite","name":"Computer Saksharata Mission","url":"https://jackdebasish.github.io/computer-saksharata-mission/"}}</script>
@@ -1059,40 +1109,76 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 </section>
 <section class="section">
   <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Campus &amp; Training</span>
+      <h2>Facilities at Computer Saksharata Mission</h2>
+      <p>Everything a student needs for focused, practical computer learning — in one place in Hirakud.</p>
+    </div>
     <div class="contact-grid">
-      <div class="contact-tile reveal">
-        <div class="ic">🖥️</div>
-        <h3>Practical Computer Lab</h3>
-        <p>Well-equipped lab with hands-on practice for every course — the heart of our training.</p>
+      <div class="contact-tile reveal"><div class="ic">🖥️</div><h3>Practical Computer Lab</h3><p>Well-equipped lab with individual computer systems for hands-on practice in every class.</p></div>
+      <div class="contact-tile reveal"><div class="ic">👨‍🏫</div><h3>Skilled Faculty</h3><p>Experienced, patient instructors who teach in simple language and support every learner.</p></div>
+      <div class="contact-tile reveal"><div class="ic">🕒</div><h3>Flexible Batches</h3><p>Morning and evening batches for students, working professionals and govt. employees.</p></div>
+      <div class="contact-tile reveal"><div class="ic">💰</div><h3>Affordable Fees</h3><p>Reasonable course fees with instalment options — quality education within everyone's reach.</p></div>
+      <div class="contact-tile reveal"><div class="ic">🧭</div><h3>Career Counselling</h3><p>Honest guidance to help every student choose the right course and career path.</p></div>
+      <div class="contact-tile reveal"><div class="ic">🎯</div><h3>Individual Attention</h3><p>Small batch sizes with personal doubt-clearing and support for every student.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-text reveal">
+        <span class="kicker">Learning Environment</span>
+        <h2>A Place Built for Focused Learning</h2>
+        <p class="lead">Our institute is designed to make computer learning comfortable, focused and effective for every student.</p>
+        <ul class="dl-list">
+          <li>Individual computer practice for every student — no sharing, no waiting</li>
+          <li>Small batch sizes so faculty can give personal attention</li>
+          <li>Step-by-step practical lessons with live demonstrations</li>
+          <li>Regular practice tasks and assessments to track progress</li>
+          <li>Supportive, friendly atmosphere — beginners feel at home</li>
+          <li>Convenient location at Laxmi Narayan Mandir Complex, Hirakud</li>
+        </ul>
+        <a class="btn btn-primary" style="margin-top:1.55rem;" href="admission.html">Join a Batch</a>
       </div>
-      <div class="contact-tile reveal">
-        <div class="ic">👨‍🏫</div>
-        <h3>Skilled Faculty</h3>
-        <p>Experienced, patient instructors who make computer learning easy for every student.</p>
-      </div>
-      <div class="contact-tile reveal">
-        <div class="ic">🕒</div>
-        <h3>Flexible Batches</h3>
-        <p>Morning and evening batches for students, working professionals and govt. employees.</p>
-      </div>
-      <div class="contact-tile reveal">
-        <div class="ic">💰</div>
-        <h3>Affordable Fees</h3>
-        <p>Reasonable course fees with instalment options — quality education within reach.</p>
-      </div>
-      <div class="contact-tile reveal">
-        <div class="ic">🧭</div>
-        <h3>Career Counselling</h3>
-        <p>Guidance to choose the right course and career path after your training.</p>
-      </div>
-      <div class="contact-tile reveal">
-        <div class="ic">🎯</div>
-        <h3>Individual Attention</h3>
-        <p>Small batch sizes with doubt-clearing and personal support for every student.</p>
+      <div class="about-visual reveal">
+        <div class="hero-frame">
+          <img src="gallery-1.jpg" alt="Computer lab at Computer Saksharata Mission, Hirakud">
+          <div class="badge b1">🖥️ Practical Lab</div>
+          <div class="badge b2">🎯 Small Batches</div>
+        </div>
       </div>
     </div>
-    <div class="center" style="margin-top:2.5rem;">
-      <a class="btn btn-primary" href="admission.html">Admission Details</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Teaching Methodology</span>
+      <h2>How Our Training Works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal"><div class="n">1</div><h3>Learn the Concept</h3><p>Simple, clear explanation of every topic in easy language.</p></div>
+      <div class="step-card reveal"><div class="n">2</div><h3>Watch the Demo</h3><p>Faculty demonstrates each step live on the computer.</p></div>
+      <div class="step-card reveal"><div class="n">3</div><h3>Practice Yourself</h3><p>Hands-on practice on lab computers until you can do it confidently.</p></div>
+      <div class="step-card reveal"><div class="n">4</div><h3>Get Feedback</h3><p>Doubt-clearing and assessments to polish your skills.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-band2 reveal">
+      <div>
+        <h2>Ready to Start Your Computer Course?</h2>
+        <p>New batches starting soon — limited seats. Call or WhatsApp us today!</p>
+      </div>
+      <div>
+        <a class="btn btn-white" href="tel:+919776017247">📞 Call +91 97760 17247</a>
+        <a class="btn btn-ghost" href="https://wa.me/919776017247" target="_blank" rel="noopener" style="margin-left:.65rem;">💬 WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>

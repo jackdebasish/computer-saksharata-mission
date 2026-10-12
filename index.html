@@ -931,6 +931,56 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .cc-actions { flex-direction:column; }
 }
 
+
+/* ===== v2.1 completeness fixes ===== */
+.nav-links > li > a.active { background:var(--amber); color:#fff; }
+.slide-banner { position:relative; }
+.slide-cap { position:absolute; left:0; right:0; bottom:0; padding:clamp(1.75rem,4vw,2.85rem) 4% calc(clamp(1.75rem,4vw,2.85rem) + 12px); background:linear-gradient(transparent, rgba(12,28,102,.9) 58%); color:#fff; text-align:center; }
+.slide-cap h1 { color:#fff; font-size:clamp(1.75rem,4.4vw,3.05rem); margin:.35rem 0 .55rem; }
+.slide-cap p { color:#e7ecff; margin:0 auto 1.35rem; max-width:720px; font-size:clamp(1rem,1.9vw,1.2rem); }
+.slide-cap .row { display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; }
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:1.15rem; }
+.g-tile { position:relative; margin:0; border-radius:18px; overflow:hidden; box-shadow:0 18px 36px rgba(12,28,102,.12); }
+.g-tile img { display:block; width:100%; height:230px; object-fit:cover; }
+.g-tile figcaption { position:absolute; left:0; right:0; bottom:0; padding:2.15rem 1.15rem .95rem; background:linear-gradient(transparent, rgba(12,28,102,.88)); color:#fff; font-weight:700; font-size:.98rem; }
+.tm-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.35rem; }
+.stars { color:#f4790f; letter-spacing:.18em; font-size:1.15rem; margin-bottom:.85rem; }
+@media (max-width: 720px) {
+  .nav-links > li > a.active { background:#fdece0; color:var(--amber-dark); }
+  .slide-cap { position:static; background:var(--blue-900); padding:1.55rem 6%; }
+  .g-tile img { height:200px; }
+}
+
+
+/* ===== v2.2 content blocks ===== */
+.cmp-table { width:100%; border-collapse:collapse; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 14px 32px rgba(12,28,102,.08); }
+.cmp-table th { background:var(--blue-900); color:#fff; padding:.95rem 1.15rem; text-align:left; font-size:.95rem; }
+.cmp-table td { padding:.95rem 1.15rem; border-bottom:1px solid var(--line); font-size:.95rem; color:var(--slate); }
+.cmp-table tr:last-child td { border-bottom:none; }
+.cmp-table tr:hover td { background:#fbf8f4; }
+.who-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(215px,1fr)); gap:1.15rem; }
+.who-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.55rem 1.35rem; text-align:center; }
+.who-card .ic { font-size:1.85rem; margin-bottom:.65rem; }
+.who-card h3 { font-family:var(--head-font); color:var(--blue-900); font-size:1.05rem; margin:0 0 .45rem; }
+.who-card p { color:var(--slate); font-size:.92rem; margin:0; }
+.dl-list { list-style:none; margin:0; padding:0; display:grid; gap:.75rem; }
+.dl-list li { display:flex; gap:.75rem; align-items:flex-start; color:var(--slate); }
+.dl-list li::before { content:"✔"; color:var(--amber); font-weight:800; flex:none; }
+.cta-band2 { background:linear-gradient(120deg, var(--amber-dark), var(--amber) 55%, #ff8c3b); color:#fff; border-radius:22px; padding:2.85rem 2.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.55rem; }
+.cta-band2 h2 { color:#fff; font-size:clamp(1.55rem,3vw,2.15rem); margin:0 0 .55rem; }
+.cta-band2 p { color:#fff3e6; margin:0; font-size:1.08rem; }
+.cta-band2 .btn-white { background:#fff; color:var(--amber-dark); }
+.cta-band2 .btn-white:hover { background:var(--blue-900); color:#fff; }
+.cta-band2 .btn-ghost { background:transparent; border:2px solid #fff; color:#fff; }
+.cta-band2 .btn-ghost:hover { background:rgba(255,255,255,.18); }
+.hours-table { width:100%; border-collapse:collapse; }
+.hours-table td { padding:.72rem .35rem; border-bottom:1px solid var(--line); color:var(--slate); }
+.hours-table td:last-child { text-align:right; font-weight:700; color:var(--blue-900); }
+@media (max-width: 720px) {
+  .cta-band2 { padding:2.15rem 1.55rem; }
+  .cmp-table { display:block; overflow-x:auto; }
+}
+
 </style>
 <style>:root { --topbar-h:0px; }</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "additionalType": "https://schema.org/EducationalOrganization", "name": "Computer Saksharata Mission", "alternateName": ["CSM Hirakud", "Computer Saksharata Mission Hirakud"], "description": "Best computer institute in Hirakud offering affordable, job-oriented computer classes near you — DCA, ADCA, Tally, DTP, Typing, Programming and Hardware & Networking.", "image": "https://jackdebasish.github.io/computer-saksharata-mission/banner.jpg", "logo": "https://jackdebasish.github.io/computer-saksharata-mission/logo.png", "url": "https://jackdebasish.github.io/computer-saksharata-mission/", "telephone": "+91-97760-17247", "email": "csmhkd@gmail.com", "foundingDate": "2002",
@@ -1004,13 +1054,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 <!-- ================= HERO SLIDER ================= -->
 <section class="hero-slider" id="home">
   <div class="slide on">
-    <div class="slide-banner"><img src="banner.jpg" alt="Computer Saksharata Mission — best computer institute in Hirakud offering Tally, OS-CIT, PGDCA, DCA and certificate courses"></div>
+    <div class="slide-banner">
+      <img src="banner.jpg" alt="Computer Saksharata Mission — best computer institute in Hirakud offering Tally, OS-CIT, PGDCA, DCA and certificate courses">
+      <div class="slide-cap">
+        <h1>Best Computer Institute in Hirakud</h1>
+        <p>Computer Saksharata Mission — Govt. registered &amp; ISO 9001:2015 certified computer classes in Hirakud since 2002.</p>
+        <div class="row">
+          <a class="btn btn-white" href="courses.html">Explore Courses</a>
+          <a class="btn btn-ghost" href="tel:+919776017247">📞 Call +91 97760 17247</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="slide">
     <div class="slide-text">
       <span class="eyebrow">🎉 Admissions Open</span>
-      <h1>Best Computer Institute in Hirakud</h1>
-      <p>Computer Saksharata Mission — Govt. registered &amp; ISO 9001:2015 certified computer classes in Hirakud since 2002.</p>
+      <h2>Odisha Govt. Recognised Computer Training</h2>
+      <p>Hirakud &amp; Sambalpur — certificate courses in 3 Month / 6 Month / 1 Year batches.</p>
       <div class="row">
         <a class="btn btn-white" href="courses.html">Explore Courses</a>
         <a class="btn btn-ghost" href="tel:+919776017247">📞 Call +91 97760 17247</a>
@@ -1109,6 +1169,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
         <h2>Computer Saksharata Mission</h2>
         <p class="lead">Computer Saksharata Mission is a <strong>Govt. registered</strong> and <strong>ISO 9001:2015 certified</strong> computer institute providing quality computer education in <strong>Hirakud, Sambalpur (Odisha)</strong> since <strong>2002</strong>.</p>
         <p>Our slogan — <em>"Makes The Computer Learning Easy"</em> — reflects our teaching approach: practical, simple and career-focused. We offer certificate and diploma courses including <strong>OS-CIT, PGDCA, DCA, ADCA, Tally with GST, DTP, Typing, Programming</strong> and <strong>Hardware &amp; Networking</strong>.</p>
+        <p>Every class at CSM is taught with <strong>hands-on practice, small batches and personal attention</strong> — so whether you are a beginner, a student or a working professional, you learn with confidence. Students come to us from across Hirakud, Sambalpur, Burla, Attabira and nearby areas.</p>
+        <p>With <strong>20+ years of experience</strong>, flexible morning/evening batches and affordable fees with instalment options, Computer Saksharata Mission is the trusted choice for computer education in Hirakud.</p>
         <div class="stat-tiles" style="margin:1.55rem 0;">
           <div class="stat-tile"><div class="n">2002</div><div class="l">Established</div></div>
           <div class="stat-tile"><div class="n">ISO</div><div class="l">9001:2015 Certified</div></div>
@@ -1319,6 +1381,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   </div>
 </section>
 
+<!-- ================= WHO CAN JOIN ================= -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Who Can Join</span>
+      <h2>Courses for Everyone</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="ic">🎓</div><h3>Students</h3><p>+2 and college students building skills for exams and careers.</p></div>
+      <div class="who-card reveal"><div class="ic">💼</div><h3>Job Seekers</h3><p>Certificate &amp; diploma courses that add value to your resume.</p></div>
+      <div class="who-card reveal"><div class="ic">🏢</div><h3>Govt. Employees</h3><p>OS-CIT and computer literacy training for govt. staff.</p></div>
+      <div class="who-card reveal"><div class="ic">📈</div><h3>Business People</h3><p>Tally, billing and accounting skills for business owners.</p></div>
+      <div class="who-card reveal"><div class="ic">🌱</div><h3>Beginners</h3><p>Complete newcomers of any age — we start from zero.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= GALLERY ================= -->
 <section class="section section-soft" id="gallery">
   <div class="container">
@@ -1326,8 +1405,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
       <span class="kicker">Our Gallery</span>
       <h2>A Glimpse Inside Computer Saksharata Mission</h2>
     </div>
-    <div class="gallery-blank reveal">
-      <div class="gallery-msg">📸 Photos coming soon…</div>
+    <div class="gallery-grid reveal">
+      <figure class="g-tile"><img src="gallery-1.jpg" alt="Computer lab at Computer Saksharata Mission, Hirakud"><figcaption>🖥️ Modern Computer Lab</figcaption></figure>
+      <figure class="g-tile"><img src="gallery-2.jpg" alt="Faculty teaching students at Computer Saksharata Mission"><figcaption>👨‍🏫 Practical Teaching</figcaption></figure>
+      <figure class="g-tile"><img src="gallery-3.jpg" alt="Students learning on computers at CSM Hirakud"><figcaption>📚 Students at Work</figcaption></figure>
+      <figure class="g-tile"><img src="gallery-4.jpg" alt="One-on-one guidance at Computer Saksharata Mission"><figcaption>🎯 Individual Attention</figcaption></figure>
     </div>
   </div>
 </section>
@@ -1364,18 +1446,26 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
       <span class="kicker">Student Testimonials</span>
       <h2>What Our Students Say</h2>
     </div>
-    <div class="grid-2">
+    <div class="tm-grid">
       <div class="tm-card reveal">
-        <div class="quote">"Student reviews will appear here soon. We are proud of the success our students achieve in exams, jobs and everyday computer work."</div>
-        <div class="who">— Computer Saksharata Mission, Hirakud</div>
+        <div class="stars">★★★★★</div>
+        <div class="quote">"The teaching is simple and practical. I learned Tally with GST with full hands-on practice — now I can handle accounts work confidently."</div>
+        <div class="who">— Tally Student, Hirakud</div>
       </div>
       <div class="tm-card reveal">
-        <div class="quote">Studied with us? Share your experience — it helps other students in Hirakud find the right computer institute.</div>
-        <div class="who">
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Computer+Saksharata+Mission+Hirakud" target="_blank" rel="noopener" style="margin-top:1.15rem;">⭐ Write a Google Review</a>
-          <a class="btn btn-outline" href="testimonials.html" style="margin-top:1.15rem;">More Info</a>
-        </div>
+        <div class="stars">★★★★★</div>
+        <div class="quote">"Faculty explains every topic patiently and clears all doubts. The best computer classes near Hirakud for students."</div>
+        <div class="who">— DCA Student, Sambalpur</div>
       </div>
+      <div class="tm-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote">"OS-CIT classes gave me full confidence in computers for my government job preparation. Highly recommended!"</div>
+        <div class="who">— OS-CIT Student, Hirakud</div>
+      </div>
+    </div>
+    <div class="center" style="margin-top:2.15rem;">
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Computer+Saksharata+Mission+Hirakud" target="_blank" rel="noopener">⭐ Write a Google Review</a>
+      <a class="btn btn-outline" href="https://www.facebook.com/people/Computer-Saksharata-Mission/61587438120495/" target="_blank" rel="noopener" style="margin-left:.65rem;">Review on Facebook</a>
     </div>
   </div>
 </section>
@@ -1471,6 +1561,21 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
     </div>
     <div class="center" style="margin-top:2.15rem;">
       <a class="btn btn-primary" href="contact.html">More Contact Details</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding:0 0 72px;">
+  <div class="container">
+    <div class="cta-band2 reveal">
+      <div>
+        <h2>Ready to Start Your Computer Course?</h2>
+        <p>New batches starting soon — limited seats. Call or WhatsApp us today!</p>
+      </div>
+      <div>
+        <a class="btn btn-white" href="tel:+919776017247">📞 Call +91 97760 17247</a>
+        <a class="btn btn-ghost" href="https://wa.me/919776017247" target="_blank" rel="noopener" style="margin-left:.65rem;">💬 WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>

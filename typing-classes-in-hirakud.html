@@ -923,6 +923,56 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .cc-actions { flex-direction:column; }
 }
 
+
+/* ===== v2.1 completeness fixes ===== */
+.nav-links > li > a.active { background:var(--amber); color:#fff; }
+.slide-banner { position:relative; }
+.slide-cap { position:absolute; left:0; right:0; bottom:0; padding:clamp(1.75rem,4vw,2.85rem) 4% calc(clamp(1.75rem,4vw,2.85rem) + 12px); background:linear-gradient(transparent, rgba(12,28,102,.9) 58%); color:#fff; text-align:center; }
+.slide-cap h1 { color:#fff; font-size:clamp(1.75rem,4.4vw,3.05rem); margin:.35rem 0 .55rem; }
+.slide-cap p { color:#e7ecff; margin:0 auto 1.35rem; max-width:720px; font-size:clamp(1rem,1.9vw,1.2rem); }
+.slide-cap .row { display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; }
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:1.15rem; }
+.g-tile { position:relative; margin:0; border-radius:18px; overflow:hidden; box-shadow:0 18px 36px rgba(12,28,102,.12); }
+.g-tile img { display:block; width:100%; height:230px; object-fit:cover; }
+.g-tile figcaption { position:absolute; left:0; right:0; bottom:0; padding:2.15rem 1.15rem .95rem; background:linear-gradient(transparent, rgba(12,28,102,.88)); color:#fff; font-weight:700; font-size:.98rem; }
+.tm-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.35rem; }
+.stars { color:#f4790f; letter-spacing:.18em; font-size:1.15rem; margin-bottom:.85rem; }
+@media (max-width: 720px) {
+  .nav-links > li > a.active { background:#fdece0; color:var(--amber-dark); }
+  .slide-cap { position:static; background:var(--blue-900); padding:1.55rem 6%; }
+  .g-tile img { height:200px; }
+}
+
+
+/* ===== v2.2 content blocks ===== */
+.cmp-table { width:100%; border-collapse:collapse; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 14px 32px rgba(12,28,102,.08); }
+.cmp-table th { background:var(--blue-900); color:#fff; padding:.95rem 1.15rem; text-align:left; font-size:.95rem; }
+.cmp-table td { padding:.95rem 1.15rem; border-bottom:1px solid var(--line); font-size:.95rem; color:var(--slate); }
+.cmp-table tr:last-child td { border-bottom:none; }
+.cmp-table tr:hover td { background:#fbf8f4; }
+.who-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(215px,1fr)); gap:1.15rem; }
+.who-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.55rem 1.35rem; text-align:center; }
+.who-card .ic { font-size:1.85rem; margin-bottom:.65rem; }
+.who-card h3 { font-family:var(--head-font); color:var(--blue-900); font-size:1.05rem; margin:0 0 .45rem; }
+.who-card p { color:var(--slate); font-size:.92rem; margin:0; }
+.dl-list { list-style:none; margin:0; padding:0; display:grid; gap:.75rem; }
+.dl-list li { display:flex; gap:.75rem; align-items:flex-start; color:var(--slate); }
+.dl-list li::before { content:"✔"; color:var(--amber); font-weight:800; flex:none; }
+.cta-band2 { background:linear-gradient(120deg, var(--amber-dark), var(--amber) 55%, #ff8c3b); color:#fff; border-radius:22px; padding:2.85rem 2.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.55rem; }
+.cta-band2 h2 { color:#fff; font-size:clamp(1.55rem,3vw,2.15rem); margin:0 0 .55rem; }
+.cta-band2 p { color:#fff3e6; margin:0; font-size:1.08rem; }
+.cta-band2 .btn-white { background:#fff; color:var(--amber-dark); }
+.cta-band2 .btn-white:hover { background:var(--blue-900); color:#fff; }
+.cta-band2 .btn-ghost { background:transparent; border:2px solid #fff; color:#fff; }
+.cta-band2 .btn-ghost:hover { background:rgba(255,255,255,.18); }
+.hours-table { width:100%; border-collapse:collapse; }
+.hours-table td { padding:.72rem .35rem; border-bottom:1px solid var(--line); color:var(--slate); }
+.hours-table td:last-child { text-align:right; font-weight:700; color:var(--blue-900); }
+@media (max-width: 720px) {
+  .cta-band2 { padding:2.15rem 1.55rem; }
+  .cmp-table { display:block; overflow-x:auto; }
+}
+
 </style>
 <style>:root { --topbar-h:0px; }</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "Typing & Data Entry (English / Hindi / Odia)", "description": "Best typing classes in Hirakud — English, Hindi & Odia typing, data entry and speed building for government exams. Affordable batches. Call +91 97760 17247.", "provider": {"@type": "Organization", "name": "Computer Saksharata Mission", "sameAs": "https://jackdebasish.github.io/computer-saksharata-mission/"}, "educationalCredentialAwarded": "Typing Certificate / Diploma", "inLanguage": "en-IN"}</script>
@@ -1105,6 +1155,41 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
           <a class="tag-pill" href="dca-course-in-hirakud.html" style="font-size:.95rem; padding:.65rem 1.15rem;">DCA Course →</a>
           <a class="tag-pill" href="adca-course-in-hirakud.html" style="font-size:.95rem; padding:.65rem 1.15rem;">ADCA Course →</a>
           <a class="tag-pill" href="tally-classes-in-hirakud.html" style="font-size:.95rem; padding:.65rem 1.15rem;">Tally Course →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RELATED COURSES ================= -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">More Courses</span>
+      <h2>Explore Other Courses</h2>
+    </div>
+    <div class="course-grid">
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Diploma Course</span><h3 class="cc-title" style="font-size:1.05rem;">DCA — Diploma in Computer Applications</h3><div class="cc-dur">⏱ 12 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="dca-course-in-hirakud.html">View More</a></div>
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Diploma Course</span><h3 class="cc-title" style="font-size:1.05rem;">ADCA — Advanced Diploma</h3><div class="cc-dur">⏱ 12 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="adca-course-in-hirakud.html">View More</a></div>
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Certificate Course</span><h3 class="cc-title" style="font-size:1.05rem;">Tally Prime with GST</h3><div class="cc-dur">⏱ 3 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="tally-classes-in-hirakud.html">View More</a></div>
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Certificate Course</span><h3 class="cc-title" style="font-size:1.05rem;">DTP &amp; Graphic Design</h3><div class="cc-dur">⏱ 6 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="dtp-course-in-hirakud.html">View More</a></div>
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Certificate Course</span><h3 class="cc-title" style="font-size:1.05rem;">Typing &amp; Data Entry</h3><div class="cc-dur">⏱ 3 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="typing-classes-in-hirakud.html">View More</a></div>
+          <div class="cc-body" style="padding:1.25rem;"><span class="cc-badge">Certificate Course</span><h3 class="cc-title" style="font-size:1.05rem;">Programming Classes</h3><div class="cc-dur">⏱ 6 Months</div><a class="btn btn-outline" style="margin-top:.85rem;" href="programming-classes-in-hirakud.html">View More</a></div>
+    </div>
+    <div class="center" style="margin-top:2.15rem;">
+      <a class="btn btn-primary" href="courses.html">View All Courses</a>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="cta-band2 reveal">
+      <div>
+        <h2>Ready to Start Your Computer Course?</h2>
+        <p>New batches starting soon — limited seats. Call or WhatsApp us today!</p>
+      </div>
+      <div>
+        <a class="btn btn-white" href="tel:+919776017247">📞 Call +91 97760 17247</a>
+        <a class="btn btn-ghost" href="https://wa.me/919776017247" target="_blank" rel="noopener" style="margin-left:.65rem;">💬 WhatsApp</a>
       </div>
     </div>
   </div>
