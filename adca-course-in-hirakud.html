@@ -191,6 +191,10 @@ body.no-topbar, html.no-topbar { --topbar-h:0px; }
   .wa-float { padding:1rem; }
   .contact-panel { padding:1.75rem; }
 }
+
+/* ---- old logo ---- */
+.nav-logo { width:48px; height:48px; border-radius:50%; display:block; box-shadow:0 4px 12px rgba(15,42,103,.18); }
+.f-logo { width:58px; height:58px; border-radius:50%; display:block; margin-bottom:.9rem; }
 </style>
 <style>:root { --topbar-h:0px; }</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "ADCA — Advanced Diploma in Computer Applications", "description": "Best ADCA course in Hirakud — Advanced Diploma in Computer Applications with programming, web & Tally. Job-ready computer classes near you. Call +91 97760 17247.", "provider": {"@type": "Organization", "name": "Computer Saksharata Mission", "sameAs": "https://jackdebasish.github.io/computer-saksharata-mission/"}, "educationalCredentialAwarded": "ADCA Certificate / Diploma", "inLanguage": "en-IN"}</script>
@@ -208,7 +212,10 @@ body.no-topbar, html.no-topbar { --topbar-h:0px; }
 
 <header class="site-header" id="siteHeader">
   <div class="container nav-row">
-    <a href="index.html" style="text-decoration:none;"><span class="brand-name">🎓 Computer Saksharata Mission</span></a>
+    <a href="index.html" style="text-decoration:none; display:flex; align-items:center; gap:.75rem;">
+      <img src="logo.png" alt="Computer Saksharata Mission logo" class="nav-logo">
+      <span class="brand-name">Computer Saksharata Mission</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -352,6 +359,7 @@ body.no-topbar, html.no-topbar { --topbar-h:0px; }
 <footer class="site-footer">
   <div class="container footer-inner">
     <div>
+      <img src="logo.png" alt="Computer Saksharata Mission logo" class="f-logo">
       <h4>Computer Saksharata Mission</h4>
       <p>Govt. registered &amp; ISO 9001:2015 certified computer institute in Hirakud, Odisha — making computer learning easy since 2002.</p>
       <div class="social-row">
