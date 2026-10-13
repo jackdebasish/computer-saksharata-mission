@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jackdebasish.github.io/computer-saksharata-mission/sitemap.xml
+Sitemap: https://csmhkd.in/sitemap.xml
